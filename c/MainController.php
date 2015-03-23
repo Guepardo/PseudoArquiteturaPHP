@@ -1,15 +1,40 @@
 <?php
-class MainController{
-	public function __construct(){
-		//incluir todos os controllers específicos aqui;
+class MainController {
+	private $controllersArray;
+	public function __construct() {
+		// incluir todos os controllers específicos aqui;
+		self::includeControllers ();
+		$this->controllersArray = array (
+				'humanos' => new HumanController () 
+		);
+	}
+	public function findMyController($useCase, $action) {
+		// Passos:
+		// 1 O useCase está nas lista de ControllersArray?
+		// 2 A action existe no controlador?
+		// 3 Invocar método;
+		// 4 Gerar output.
 		
+		// if( $this->$controllersArray[$useCase] == null ) return;
+		$controller = $this->controllersArray [$useCase];
+		$realNameMethod = '';
+		
+		$arrayMethods = $controller->sayMyActions ();
+		
+		foreach ( $arrayMethods as $a ) {
+			if (strcasecmp ( $a, $action ) == 0) {
+				$realNameMethod = $a;
+				break;
+			}
+		}
+		
+		if (strlen ( $realNameMethod ) == 0)
+			return;
+		
+		$reflection = new ReflectionMethod ( $controller->sayMyName (), $realNameMethod );
+		return $reflection->invoke ( $controller, 'lol' );
 	}
-	
-	public function findMyController($useCase, $action){
-	
-	}
-	
-	private function includeControllers(){
-		include("c/HumanController.php");
+	private function includeControllers() {
+		include ("c/HumanController.php");
 	}
 }
