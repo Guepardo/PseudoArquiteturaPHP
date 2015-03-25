@@ -28,12 +28,14 @@ class MainController {
 			}
 		}
 		
-		if (strlen ( $realNameMethod ) == 0)
-			return;
+		if (strlen ( $realNameMethod ) == 0){
+			die('Não há ação para ser executada'); 
+		}
 		
 		$reflection = new ReflectionMethod ( $controller->sayMyName (), $realNameMethod );
 		return $reflection->invoke ( $controller, 'lol' );
 	}
+	
 	private function includeControllers() {
 		include ("c/HumanController.php");
 	}
