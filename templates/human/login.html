@@ -3,13 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
+    <title>Login</title>
     <link rel="stylesheet" href="templates/human/css/foundation.css" />
     <script src="templates/human/js/vendor/modernizr.js"></script>
 
     <style>
-      .fix_top{
-        margin-top: 5%;
+      .fix{
+      		min-width: 335px !important;  
+      		max-width: 339px !important;
+      	}
+      .fix_top{ 
+        margin-top: 3%;
       }
     	.main_container{
     			position:relative;
@@ -27,7 +31,7 @@
 
     	body{
     		background-image: url("templates/human/src_img/background.jpg"); 
-        opacity: 0.8; 
+        opacity: 0.9; 
     	}
       #logo{
         margin: 55px 100px 55px 100px;
@@ -46,14 +50,14 @@
   <body>
     
     <div class="row fix_top">
-  		<div class="small-4 small-centered columns main_container">
+  		<div class="small-4 small-centered columns main_container fix">
   			<!--Logo marca --> 
-  			<div class="row">
+  			<div class="row fix">
   				<div class="large-12 columns borda_inferior">
                 <img src="templates/human/src_img/logo.png" alt="" id="logo">
   				</div>	
   			</div>
-  			<!--Forme--> 
+  			<!--Form--> 
   			<div class="row">
   				<div class="large-12 columns">
   					  <label>CPF
@@ -65,9 +69,12 @@
             <label>Matenha-me conectado</label>
                   <input id="checkbox1" type="checkbox">
                   <!--Area para os botões--> 
-            <div class="row">
+            <div class="row ">
                 <div class="large-12 columns">
                     <a href="#" id="buttom_login" class="button small buttom_fix">Login</a>
+                </div>
+                 <div class="large-12 columns">
+                    <a href="#" id="buttom_login" class="button alertdo  small buttom_fix">Cadastrar</a>
                 </div>
                     <a href="#" >Esqueci minha senha</a>
             </div>
@@ -91,8 +98,7 @@
       $(document).ready(function(){
 
         $('#buttom_login').click(function(){
-          $('#myAlert').foundation({alert: {speed: 3000}});
-          $(document).foundation('alert', 'reflow');
+          
         }); 
         
       }); 
